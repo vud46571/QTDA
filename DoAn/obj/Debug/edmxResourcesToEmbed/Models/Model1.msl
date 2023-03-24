@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DoanNCModelStoreContainer" CdmEntityContainer="DoanNCEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="DoanNCModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Anh" ColumnName="Anh" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CauHois">
+      <EntityTypeMapping TypeName="DoanNCModel.CauHoi">
+        <MappingFragment StoreEntitySet="CauHoi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MaDeThi" ColumnName="MaDeThi" />
+          <ScalarProperty Name="MaDapAn" ColumnName="MaDapAn" />
+          <ScalarProperty Name="Cau_hoi" ColumnName="Cau_hoi" />
+          <ScalarProperty Name="Dap_an_1" ColumnName="Dap_an_1" />
+          <ScalarProperty Name="Dap_an_2" ColumnName="Dap_an_2" />
+          <ScalarProperty Name="Dap_an_3" ColumnName="Dap_an_3" />
+          <ScalarProperty Name="Dap_an_4" ColumnName="Dap_an_4" />
+          <ScalarProperty Name="Ghi_chu" ColumnName="Ghi_chu" />
+          <ScalarProperty Name="Muc_do_kho" ColumnName="Muc_do_kho" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DapAns">
+      <EntityTypeMapping TypeName="DoanNCModel.DapAn">
+        <MappingFragment StoreEntitySet="DapAn">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="DapAn1" ColumnName="DapAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeThis">
+      <EntityTypeMapping TypeName="DoanNCModel.DeThi">
+        <MappingFragment StoreEntitySet="DeThi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="NgayThi" ColumnName="NgayThi" />
+          <ScalarProperty Name="ThoiGianThi" ColumnName="ThoiGianThi" />
+          <ScalarProperty Name="SoLuongCauHoi" ColumnName="SoLuongCauHoi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoKhoes">
+      <EntityTypeMapping TypeName="DoanNCModel.DoKho">
+        <MappingFragment StoreEntitySet="DoKho">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenMucDo" ColumnName="TenMucDo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KetQuas">
+      <EntityTypeMapping TypeName="DoanNCModel.KetQua">
+        <MappingFragment StoreEntitySet="KetQua">
+          <ScalarProperty Name="ManThanhVien" ColumnName="ManThanhVien" />
+          <ScalarProperty Name="MaDeThi" ColumnName="MaDeThi" />
+          <ScalarProperty Name="MaCauHoi" ColumnName="MaCauHoi" />
+          <ScalarProperty Name="DapAn" ColumnName="DapAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Khois">
+      <EntityTypeMapping TypeName="DoanNCModel.Khoi">
+        <MappingFragment StoreEntitySet="Khoi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenKhoi" ColumnName="TenKhoi" />
+          <ScalarProperty Name="Meta" ColumnName="Meta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThanhViens">
+      <EntityTypeMapping TypeName="DoanNCModel.ThanhVien">
+        <MappingFragment StoreEntitySet="ThanhVien">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+          <ScalarProperty Name="Anh" ColumnName="Anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

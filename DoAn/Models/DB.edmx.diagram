@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a76d6307a81455cb22d12ba28e88294" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="DoanNCModel.Admin" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoanNCModel.CauHoi" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoanNCModel.CTKetQua" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoanNCModel.DeThi" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoanNCModel.DoKho" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoanNCModel.KetQua" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoanNCModel.ThanhVien" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="DoanNCModel.FK_CauHoi_DeThi1" ManuallyRouted="false" />
+        <AssociationConnector Association="DoanNCModel.FK_CauHoi_DoKho2" ManuallyRouted="false" />
+        <AssociationConnector Association="DoanNCModel.FK_CTKetQua_CauHoi" ManuallyRouted="false" />
+        <AssociationConnector Association="DoanNCModel.FK_CTKetQua_ThanhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="DoanNCModel.FK_KetQua_DeThi" ManuallyRouted="false" />
+        <AssociationConnector Association="DoanNCModel.FK_KetQua_ThanhVien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

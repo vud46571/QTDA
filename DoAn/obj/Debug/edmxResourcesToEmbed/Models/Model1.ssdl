@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoanNCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Anh" Type="nvarchar" MaxLength="50" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diachi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CauHoi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaDeThi" Type="int" />
+    <Property Name="MaDapAn" Type="int" />
+    <Property Name="Cau_hoi" Type="nvarchar" MaxLength="200" />
+    <Property Name="Dap_an_1" Type="nvarchar" MaxLength="200" />
+    <Property Name="Dap_an_2" Type="nvarchar" MaxLength="200" />
+    <Property Name="Dap_an_3" Type="nvarchar" MaxLength="200" />
+    <Property Name="Dap_an_4" Type="nvarchar" MaxLength="200" />
+    <Property Name="Ghi_chu" Type="nvarchar" MaxLength="200" />
+    <Property Name="Muc_do_kho" Type="int" />
+  </EntityType>
+  <EntityType Name="DapAn">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="DapAn" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="DeThi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NgayThi" Type="date" />
+    <Property Name="ThoiGianThi" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoLuongCauHoi" Type="int" />
+  </EntityType>
+  <EntityType Name="DoKho">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenMucDo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="KetQua">
+    <Key>
+      <PropertyRef Name="ManThanhVien" />
+      <PropertyRef Name="MaDeThi" />
+      <PropertyRef Name="MaCauHoi" />
+    </Key>
+    <Property Name="ManThanhVien" Type="int" Nullable="false" />
+    <Property Name="MaDeThi" Type="int" Nullable="false" />
+    <Property Name="MaCauHoi" Type="int" Nullable="false" />
+    <Property Name="DapAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Khoi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenKhoi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Meta" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ThanhVien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="SDT" Type="varchar" MaxLength="50" />
+    <Property Name="Diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Anh" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_CauHoi_DapAn">
+    <End Role="DapAn" Type="Self.DapAn" Multiplicity="0..1" />
+    <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DapAn">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CauHoi">
+        <PropertyRef Name="MaDapAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHoi_DeThi2">
+    <End Role="DeThi" Type="Self.DeThi" Multiplicity="0..1" />
+    <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeThi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CauHoi">
+        <PropertyRef Name="MaDeThi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHoi_DoKho2">
+    <End Role="DoKho" Type="Self.DoKho" Multiplicity="0..1" />
+    <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoKho">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CauHoi">
+        <PropertyRef Name="Muc_do_kho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_CauHoi2">
+    <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="1" />
+    <End Role="KetQua" Type="Self.KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauHoi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="MaCauHoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_DeThi2">
+    <End Role="DeThi" Type="Self.DeThi" Multiplicity="1" />
+    <End Role="KetQua" Type="Self.KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeThi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="MaDeThi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_ThanhVien1">
+    <End Role="ThanhVien" Type="Self.ThanhVien" Multiplicity="1" />
+    <End Role="KetQua" Type="Self.KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhVien">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="ManThanhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DoanNCModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CauHoi" EntityType="Self.CauHoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DapAn" EntityType="Self.DapAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeThi" EntityType="Self.DeThi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoKho" EntityType="Self.DoKho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KetQua" EntityType="Self.KetQua" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khoi" EntityType="Self.Khoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThanhVien" EntityType="Self.ThanhVien" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CauHoi_DapAn" Association="Self.FK_CauHoi_DapAn">
+      <End Role="DapAn" EntitySet="DapAn" />
+      <End Role="CauHoi" EntitySet="CauHoi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHoi_DeThi2" Association="Self.FK_CauHoi_DeThi2">
+      <End Role="DeThi" EntitySet="DeThi" />
+      <End Role="CauHoi" EntitySet="CauHoi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHoi_DoKho2" Association="Self.FK_CauHoi_DoKho2">
+      <End Role="DoKho" EntitySet="DoKho" />
+      <End Role="CauHoi" EntitySet="CauHoi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_CauHoi2" Association="Self.FK_KetQua_CauHoi2">
+      <End Role="CauHoi" EntitySet="CauHoi" />
+      <End Role="KetQua" EntitySet="KetQua" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_DeThi2" Association="Self.FK_KetQua_DeThi2">
+      <End Role="DeThi" EntitySet="DeThi" />
+      <End Role="KetQua" EntitySet="KetQua" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_ThanhVien1" Association="Self.FK_KetQua_ThanhVien1">
+      <End Role="ThanhVien" EntitySet="ThanhVien" />
+      <End Role="KetQua" EntitySet="KetQua" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

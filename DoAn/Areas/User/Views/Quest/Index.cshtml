@@ -1,0 +1,253 @@
+﻿@model IEnumerable<DoAn.Models.CauHoi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/User/Views/Shared/_UserLayout.cshtml";
+}
+<body class="sub_page">
+    <div class="top_container ">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="../Main/Index">
+                        <span>
+                            Fanadesh
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                            <ul class="navbar-nav  ">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="../Main/Index"> Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="../About/Index"> About </a>
+                                </li>
+
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="../Admission/Index"> Admission </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../Why/Index"> Why Us </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../Contact/Index">Contact Us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../Exam/Index">Exam</a>
+                                </li>
+
+                                <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Main", null, new { @class = "a_de" })</li>
+                            </ul>
+                        </div>
+                </nav>
+            </div>
+        </header>
+
+    </div>
+    <!-- end header section -->
+    <!-- contact section -->
+
+
+    <div class="container">
+        <div class="card mb-3">
+            <li>
+                <div class="form-control btn-danger" id="demnguoc"></div>
+            </li>
+            <form action="" method="post">
+                <input id="QA" name="QA" hidden />
+                <input id="MaDeThi" name="MaDeThi" value=@ViewBag.MaDeThi hidden />
+                @foreach (var item in Model)
+                {
+                    <div class="question bg-white p-3 border-bottom">
+                        <div class="d-flex flex-row align-items-center question-title">
+                            <h5 class="mt-1 ml-2"><b>Câu hỏi: @item.Cau_hoi</b>"</h5>
+                        </div>
+                        <div class="ans ml-2">
+                            <label class="radio">
+                                <input type="radio" name=@item.id value="A" /><span>A. @item.Dap_an_1</span>
+                            </label>
+                        </div>
+                        <div class="ans ml-2">
+                            <label class="radio">
+                                <input type="radio" name=@item.id value="B" /><span>B. @item.Dap_an_2</span>
+                            </label>
+                        </div>
+                        <div class="ans ml-2">
+                            <label class="radio">
+                                <input type="radio" name=@item.id value="C" /><span>C. @item.Dap_an_3</span>
+                            </label>
+                        </div>
+                        <div class="ans ml-2">
+                            <label class="radio">
+                                <input type="radio" name=@item.id value="D" /><span>D. @item.Dap_an_4</span>
+                            </label>
+                        </div>
+                    </div>
+                }
+                <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                    <input id="btnSubmit" class="btn btn-primary border-success align-items-center btn-success" type="submit" name="submit" value="Finish" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('#btnSubmit').click(function () {
+                let frmValue = {}
+                $('form input[type=radio]:checked').each(function (i, e) {
+                    frmValue[e.name] = e.value;
+                })
+                console.log(JSON.stringify(frmValue))
+                $('#QA').val("" + JSON.stringify(frmValue));
+            })
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        var time = 3600; // đơn vị là giây
+        var phut = Math.floor(time / 60);
+        var giay = time - phut * 60;
+        var txtThoiGian = document.getElementById("demnguoc");
+
+        var timer = setInterval(function () {
+            if (giay == 0) {
+                if (phut == 0) {
+                    clearInterval(timer);
+                    $("#myModal").modal({ backdrop: "static" });
+                    return;
+
+                } else {
+                    phut--;
+                    giay = 60;
+                }
+            }
+
+            if (phut > 0) {
+                var sophut = phut + ' phút';
+            } else {
+                var sophut = '';
+            }
+            txtThoiGian.innerHTML = sophut + ' ' + giay + ' ' + 'giây';
+            giay--;
+        }, 1000);
+
+    </script>
+
+    <!-- end contact section -->
+    <section class="info_section layout_padding-top">
+        <div class="info_logo-box">
+            <h2>
+                Fanadesh
+            </h2>
+        </div>
+        <div class="container layout_padding2">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>
+                        About Us
+                    </h5>
+                    <p>
+                        dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5>
+                        Useful Link
+                    </h5>
+                    <ul>
+                        <li>
+                            <a href="">
+                                Video games
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Remote control
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                3d controller
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>
+                        Contact Us
+                    </h5>
+                    <p>
+                        dolor sit amet, consectetur magna aliqua. quisdotempor incididunt ut e
+                    </p>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="subscribe_container">
+                        <h5>
+                            Newsletter
+                        </h5>
+                        <div class="form_container">
+                            <form action="">
+                                <input type="email" placeholder="Enter your email">
+                                <button type="submit">
+                                    Subscribe
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="social_container">
+
+                <div class="social-box">
+                    <a href="">
+                        <img src="~/Content/FileHTML/images/fb.png" alt="">
+                    </a>
+
+                    <a href="">
+                        <img src="~/Content/FileHTML/images/twitter.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="~/Content/FileHTML/images/linkedin.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="~/Content/FileHTML/images/instagram.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+        <p>
+            Copyright &copy; 2019 All Rights Reserved By
+            <a href="https://html.design/">Free Html Templates</a>
+        </p>
+    </section>
+    <!-- footer section -->
+
+    <script type="text/javascript" src="~/Content/FileHTML/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/FileHTML/js/bootstrap.js"></script>
+
+
+</body>
